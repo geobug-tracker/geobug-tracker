@@ -1,8 +1,8 @@
-const books = require('./data');
+const bugs = require('./data');
 
 const resolvers = {
   Query: {
-    books: () => books,
+    bugs: () => bugs,
   },
 };
 

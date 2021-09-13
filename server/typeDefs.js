@@ -1,12 +1,12 @@
 const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
-  type Book {
+  type Bug {
     title: String
-    author: String
+    description: String
   }
   type Query {
-    books: [Book]
+    bugs: [Bug]!
   }
 `;
 

@@ -1,12 +1,12 @@
-const books = [
+const bugs = [
   {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
+    title: 'The frontend is not working.',
+    description: 'This is a description.',
   },
   {
-    title: 'City of Glass',
-    author: 'Paul Auster',
+    title: 'The backend is not working.',
+    description: 'This is another description.',
   },
 ];
 
-module.exports = books;
+module.exports = bugs;

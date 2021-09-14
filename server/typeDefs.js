@@ -4,6 +4,7 @@ exports.typeDefs = gql`
   type Bug {
     id: String!
     description: String
+    author: String
   }
 
   type Query {

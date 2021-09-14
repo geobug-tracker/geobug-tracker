@@ -12,18 +12,18 @@ import './global.scss';
 const App = () => {
   return (
     <Router>
-      <Header />
       <Suspense fallback={<Loader />}>
         <Switch>
           <Route path="/signup">
             <Signup />
           </Route>
           <Route path="/">
+            <Header />
             <Home />
+            <Footer className="footer" />
           </Route>
         </Switch>
       </Suspense>
-      <Footer className="footer" />
     </Router>
   );
 };

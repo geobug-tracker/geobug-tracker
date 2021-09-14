@@ -4,9 +4,10 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start": "concurrently \"npm run dev:webpack\" \"npm run dev:express\"",
+    "start": "concurrently \"npm run dev:webpack\" \"npm run dev:apollo\"",
     "dev:webpack": "NODE_ENV=development webpack serve --config ./webpack/webpack.dev.js",
-    "dev:express": "NODE_ENV=development PORT=3000 nodemon server/index.js",
+    "dev:apollo": "NODE_ENV=development PORT=3000 nodemon server/index.js",
+    "test": "NODE_ENV=test jest",
     "build": "NODE_ENV=production webpack --config ./webpack/webpack.prod.js",
     "serve": "NODE_ENV=production PORT=3000 node server/index.js",
     "analyze": "NODE_ENV=production ANALYZE=true webpack --config ./webpack/webpack.prod.js"
@@ -15,11 +16,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server": "^3.3.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
     "babel-loader": "^8.2.2",
     "concurrently": "^6.2.1",
     "copy-webpack-plugin": "^9.0.1",
@@ -31,6 +36,7 @@
     "file-loader": "^6.2.0",
     "graphql": "^15.5.3",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.2.0",
     "mini-css-extract-plugin": "^2.3.0",
     "nodemon": "^2.0.12",
     "react": "^17.0.2",

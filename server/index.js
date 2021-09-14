@@ -1,21 +1,23 @@
-const express = require('express');
-const path = require('path');
+const { ApolloServer } = require("apollo-server");
+const { typeDefs } = require("./typeDefs");
+const { resolvers } = require("./resolvers");
 
-const app = express();
-app.use(express.json());
+const bugs = [
+  {
+    id: "1234",
+    description: "this is a bug yo",
+    author: "tomas",
+  },
+  {
+    id: "12345",
+    description: "this is a FUBAR bug yo",
+    author: "albert",
+  },
+];
 
-app.get('/api/v1', (req, res) => {
-  res.status(200).send('Welcome to the API.');
-});
+// Creating new instance of ApolloServer
+const server = new ApolloServer({ typeDefs, resolvers }); // TODO - just import these from other files
 
-/* Only serve static content in production. Use WDS in development. */
-if (process.env.NODE_ENV === 'production') {
-  app.use('/', express.static(path.resolve(__dirname, '..', 'build')));
-  app.get('/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
-  });
-}
-
-app.listen(3000, () => {
-  console.log(`App listening on port 3000.`);
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server is ready at ${url}`);
 });

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import "./CreateBug.scss";
 
 
 const CreateBug = ({ setShowModal }) => {
   return (
-    <div className="createBug">
+    <div className="bug-modal">
       <div className="createBugContent">
-        <div clasName='createBugHeader'>
+        <div className='createBugHeader'>
           <h2>Create a New Bug</h2>
         </div>
         <form className='createBugForm'> 
@@ -38,15 +39,5 @@ const CreateBug = ({ setShowModal }) => {
     </div>
   )
 }
-
-// Name
-// Product
-// LInk/Repo
-// Description
-// Priority Level
-
-
-
-
 
 export default CreateBug

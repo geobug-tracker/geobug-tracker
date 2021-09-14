@@ -4,7 +4,7 @@ import "./Signin.scss";
 const Signin = () => {
   return (
     <div className="signin">
-      <div clasName='signinHeader'>
+      <div className='signinHeader'>
         <h2>Sign-in Form</h2> 
       </div>
       <form className='signinForm'> 

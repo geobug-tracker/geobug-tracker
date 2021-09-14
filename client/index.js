@@ -3,9 +3,33 @@ import { BrowserRouter } from 'react-router-dom';
 import { render } from 'react-dom';
 import App from './app.jsx';
 
+import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:3000',
+  cache: new InMemoryCache()
+});
+
 render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <ApolloProvider client={client}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ApolloProvider>,
   document.getElementById('root')
 );
+
+
+
+// client
+//   .query({
+//     query: gql`
+//       query {
+//         bugs {
+//           title
+//           description
+//         }
+//       }
+//     `
+//   })
+//   .then(result => console.log(result));

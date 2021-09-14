@@ -1,6 +1,7 @@
 import React from "react";
+import "./Signin.scss";
 
-const Signup = () => {
+const Signin = () => {
   return (
     <div className="signin">
       <div clasName='signinHeader'>
@@ -32,4 +33,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signin;

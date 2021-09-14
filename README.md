@@ -1,18 +1,9 @@
-# React Template Repository
+# Bug Tracker
 
-This is a template repository for a full-stack, dockerized application using React, React-Router, Webpack, Express, and SASS. It includes:
-
-- Webpack production optimizations
-- Webpack proxying for backend
-- Multi-stage docker build for minimal image
-- SASS & loaders for styling
-- Express for SPA backend
-- React-router for routes
-- Lazy-loading for optimization
-- BundleAnalyzerPlugin for bundle management
-- URL Loader for Images/Assets
-- ESLint for Linting
-
-## Future Changes
-
-I'm going to add Github actions for CI/CD and Jest for testing.
+## Apollo Client
+- ✅ Install Apollo Client (in order to make GQL queries to the backend)
+- ✅ Initialize an Apollo Client Instance
+- ✅ Wrap our application with the provider to enable connections
+- ✅ Write out a query using GQL syntax
+- Use Apollo Client to execute that query and get the results from the backend
+- Based on the data we get, render different <Bugs> to the page

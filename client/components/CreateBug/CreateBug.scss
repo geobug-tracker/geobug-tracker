@@ -1,0 +1,26 @@
+.createBug {
+  border: 1px solid black;
+  padding: 1em;
+  width: 300px;
+  background: white;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -150px;
+  display: flex;
+  justify-content: center;
+  // width: 30%;
+  // height: 30%;
+  // border: 1px solid black;
+  // display: flex;
+  // position: fixed;
+  // top: 40%;
+  // left: 40%;
+  // justify-content: center;
+  // align-content: center;
+  // .createBugContent {
+  //   background-color: light;
+  // }
+}

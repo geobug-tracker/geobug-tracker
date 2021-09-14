@@ -5,7 +5,7 @@ import Footer from './components/Footer/Footer';
 import Loader from './components/Loader/Loader';
 
 const Home = lazy(() => import('./views/Home'));
-const About = lazy(() => import('./views/About'));
+const Signin = lazy(() => import('./views/Signin'));
 
 import './global.scss';
 
@@ -15,8 +15,8 @@ const App = () => {
       <Header />
       <Suspense fallback={<Loader />}>
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/signin">
+            <Signin />
           </Route>
           <Route path="/">
             <Home />

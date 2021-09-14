@@ -14,12 +14,12 @@ const typeDefs = gql`
 
   type User {
     id: ID!
-    username: String!
-    firstname: String!
-    lastname: String!
+    userName: String!
+    firstName: String!
+    lastName: String!
     password: String!
     email: String!
-    teamID: String
+    teamId: String
     bugs: [Bug]
   }
 
@@ -30,9 +30,10 @@ const typeDefs = gql`
   }
 
   type Query {
-    bugs: [Bug]!
+    bugs: [Bug]
+    bug: Bug!
     users: [User]!
-    user(username: String!): User
+    user(userName: String!): User
   }
 
   type Mutation {
@@ -47,7 +48,7 @@ const typeDefs = gql`
       product: String
     ): BugUpdateResponse!
     deleteBug(id: ID!): BugUpdateResponse!
-    login(username: String, password: String): User
+    login(userName: String, password: String): User
   }
 
   type BugUpdateResponse {

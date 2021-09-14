@@ -1,6 +1,6 @@
 import React from "react";
 
-const Signin = () => {
+const Signup = () => {
   return (
     <div className="signin">
       <div clasName='signinHeader'>
@@ -32,4 +32,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;

@@ -14,7 +14,7 @@ const Header = (props) => {
         <a onClick={home}><i className="fas fa-home"></i></a>
         <button onClick={() => setShowModal(!showModal)}>Create Bug</button>
       </div>
-      {showModal && <CreateBug setShowModal={setShowModal}/>};
+      {showModal && <CreateBug setShowModal={setShowModal}/>}
       <div className='account'>
         <button>Login</button>
         <button onClick={signup} >Sign-up</button>

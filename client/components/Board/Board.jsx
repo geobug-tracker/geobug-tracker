@@ -20,6 +20,7 @@ const Board = () => {
   if(loading) return <p>Loading...</p>
   if(error) return <p>An error occured!</p>
   
+  
   return (
     <div className='board'>
       <div className='fields'>
@@ -31,16 +32,22 @@ const Board = () => {
       <div className='fields'>
         <h4 className='title'>In-Progress</h4>
         <div className='inprogress column'>
+          {/* Add filter for in-progress to the map */}
+        {data.bugs.map(bug => <Bug data={bug} />)}
         </div>
       </div>
       <div className='fields'>
         <h4 className='title'>Review</h4>
         <div className='review column'>
+          {/* Add filter for review to the map */}
+        {data.bugs.map(bug => <Bug data={bug} />)}
         </div>
       </div>
       <div className='fields'>
         <h4 className='title'>Done</h4>
         <div className='done column'>
+          {/* Add filter for done to the map */}
+        {data.bugs.map(bug => <Bug data={bug} />)} 
         </div>
       </div>
     </div>

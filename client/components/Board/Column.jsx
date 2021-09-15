@@ -15,7 +15,7 @@ const Column = ({ data, columnName, title, refetch }) => {
   return (
     <>
       <h4 className="title">{title}</h4>
-      <div className="new column" ref={drop} style={{ backgroundColor: isOver ? 'red' : 'white' }}>
+      <div className="new column" ref={drop} style={{ backgroundColor: isOver ? 'lightSkyBlue' : 'white' }}>
         {data.bugs
           .filter((bug) => bug.status === columnName)
           .map((bug, i) => (

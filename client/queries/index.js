@@ -8,3 +8,16 @@ export const GET_ALL_BUGS = gql`
     }
   }
 `;
+
+export const CREATE_BUG = gql``;
+
+export const UPDATE_BUG = gql``;
+
+export const DELETE_BUG = gql``;
+
+/* User Queries */
+export const SIGNUP = gql``;
+
+export const LOGIN = gql``;
+
+export const LOGOUT = gql``;

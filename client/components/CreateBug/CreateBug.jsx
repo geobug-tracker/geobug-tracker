@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useDrag } from "react-dnd";
-import "./CreateBug.scss";
+import React, { useState } from 'react';
+import { useDrag } from 'react-dnd';
+import './CreateBug.scss';
 
 const CreateBug = ({ setShowModal }) => {
   return (

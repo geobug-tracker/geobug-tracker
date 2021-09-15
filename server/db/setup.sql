@@ -24,6 +24,11 @@ CREATE TABLE bug (
   product varchar(100),
   FOREIGN KEY (userId) REFERENCES users(id)
 );
+<<<<<<< HEAD
+
+
+
+=======
 -- Give me all the bugs associated with a particular user id
 -- select *
 -- from user
@@ -31,3 +36,4 @@ CREATE TABLE bug (
 --         on user.id = bug.userID
 -- where user.id = ${}
 -- integer NOT NULL PRIMARY KEY,
+>>>>>>> dev

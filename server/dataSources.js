@@ -1,4 +1,4 @@
-const { DataSource } = require("apollo-datasource");
+const { DataSource } = require('apollo-datasource');
 
 class UserAPI extends DataSource {
   //store is going to be the sql database
@@ -26,9 +26,12 @@ class UserAPI extends DataSource {
    */
   //    return ALL bugs records from SQL database
   async getAllBugs() {
-    const bugs = await this.store.query(`SELECT * FROM bug`);
-    console.log(bugs.rows[0]);
-    return bugs.rows ? bugs.rows : [];
+    try {
+      const bugs = await this.store.query(`SELECT * FROM bug`);
+      return bugs.rows ? bugs.rows : [];
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   async getBug(bugId) {
@@ -56,12 +59,4 @@ class UserAPI extends DataSource {
   }
   // update bug status - needs a mutation query
 }
-
-// title: String!
-//     description: String
-//     userId: String
-//     priority: String
-//     status: String
-//     linkRepo: String
-//     product: String
 module.exports = UserAPI;

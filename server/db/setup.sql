@@ -1,10 +1,10 @@
 CREATE TABLE team (
-  id integer NOT NULL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name varchar(100),
   company varchar(100)
 );
 CREATE TABLE users (
-  id integer NOT NULL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   teamId integer,
   username varchar(100),
   firstName varchar(100),
@@ -14,7 +14,7 @@ CREATE TABLE users (
   FOREIGN KEY (teamId) REFERENCES team(id)
 );
 CREATE TABLE bug (
-  id integer NOT NULL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   title varchar(100),
   userId integer,
   description text,
@@ -30,3 +30,4 @@ CREATE TABLE bug (
 --     inner join bug
 --         on user.id = bug.userID
 -- where user.id = ${}
+-- integer NOT NULL PRIMARY KEY,

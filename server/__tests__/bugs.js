@@ -1,6 +1,8 @@
 const { ApolloServer, gql } = require('apollo-server');
 const typeDefs = require('../typeDefs');
 const resolvers = require('../resolvers');
+const pool = require('../db/pool');
+const BugAPI = require('../dataSources');
 
 const GET_ALL_BUGS = gql`
   query {
@@ -14,20 +16,32 @@ const GET_ALL_BUGS = gql`
   }
 `;
 
-const data = require('../data');
+describe('Testing bug resolver', () => {
+  /* Connect to PG */
+  let server;
+  beforeAll(() => {
+    server = new ApolloServer({
+      typeDefs,
+      resolvers,
+      dataSources: () => ({
+        bugAPI: new BugAPI(global.pool),
+      }),
+    });
+  });
 
-const server = new ApolloServer({ typeDefs, resolvers });
+  afterAll(async () => {
+    await global.pool.end();
+  });
 
-xdescribe('Testing bug resolver', () => {
   it('Should return bug titles', async () => {
-    const result = await server.executeOperation({
+    const { data } = await server.executeOperation({
       query: GET_ALL_BUGS,
       variables: {},
     });
 
-    expect(result.errors).toBeUndefined();
-    expect(result.data?.bugs).toHaveLength(2);
-    expect(result.data?.bugs[0].title).toBe('The frontend is not working.');
-    expect(result.data?.bugs[1].description).toBe('This is another description.');
+    expect(data.errors).toBeUndefined();
+    expect(data?.bugs).toHaveLength(5);
+    expect(data?.bugs[0].title).toBe('First Bug');
+    expect(data?.bugs[4].description).toBe('I am the fifth bug');
   });
 });

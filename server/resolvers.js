@@ -1,5 +1,3 @@
-const bugs = require('./data');
-
 const resolvers = {
   Query: {
     bugs: (_, __, { dataSources }) => dataSources.bugAPI.getAllBugs(),

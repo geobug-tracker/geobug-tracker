@@ -7,7 +7,9 @@
     "start": "concurrently \"npm run dev:webpack\" \"npm run dev:apollo\"",
     "dev:webpack": "NODE_ENV=development webpack serve --config ./webpack/webpack.dev.js",
     "dev:apollo": "NODE_ENV=development PORT=3000 nodemon server/index.js",
-    "test": "NODE_ENV=test jest",
+    "test:client": "NODE_ENV=test jest --testPathPattern=client",
+    "test:server": "NODE_ENV=test jest --testPathPattern=server",
+    "test": "NODE_ENV=test npm run test:client && npm run test:server",
     "build": "NODE_ENV=production webpack --config ./webpack/webpack.prod.js",
     "serve": "NODE_ENV=production PORT=3000 node server/index.js",
     "analyze": "NODE_ENV=production ANALYZE=true webpack --config ./webpack/webpack.prod.js"
@@ -28,6 +30,7 @@
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
+    "@databases/sql": "^3.2.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
     "babel-loader": "^8.2.2",

@@ -1,6 +1,8 @@
 const { Pool, Client } = require('pg');
-// Go look at the postgres docs
-async function connect() {
+const path = require('path');
+const dotenv = require('dotenv');
+
+async function connect(silent) {
   const config = {
     host: process.env.PGHOST,
     port: process.env.PGPORT,
@@ -16,7 +18,7 @@ async function connect() {
 
     /* Create and export pool */
     const pool = new Pool(config);
-    console.log(`🏊 Pool connected!`);
+    if (!silent) console.log(`🏊 Pool connected!`);
 
     return pool;
   } catch (err) {

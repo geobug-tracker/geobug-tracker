@@ -17,7 +17,7 @@ beforeAll(() => {
 });
 
 describe('Testing bugs resolver', () => {
-  it('Should return bug titles', async () => {
+  it('Should return all bugs.', async () => {
     const { data } = await server.executeOperation({ query: GET_ALL_BUGS, variables: {} });
     expect(data.errors).toBeUndefined();
     expect(data?.bugs).toHaveLength(5);
@@ -25,7 +25,7 @@ describe('Testing bugs resolver', () => {
     expect(data?.bugs[4].description).toBe('I am the fifth bug');
   });
 
-  it('Should return single bug by ID', async () => {
+  it('Should return single bug by ID.', async () => {
     const { data } = await server.executeOperation({ query: GET_BUG_BY_ID });
     expect(data.errors).toBeUndefined();
     expect(data.bug).toMatchObject({

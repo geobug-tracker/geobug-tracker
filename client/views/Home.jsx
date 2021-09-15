@@ -1,9 +1,9 @@
-import React from "react";
-import Board from "../components/Board/Board";
+import React from 'react';
+import Board from '../components/Board/Board';
 import { useQuery, gql } from '@apollo/client';
 import Header from '../components/Header/Header';
-import { DndProvider } from 'react-dnd' 
-import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 export const GET_ALL_BUGS = gql`
   query {

@@ -1,4 +1,4 @@
-const { ApolloServer, gql } = require("apollo-server");
+const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
   type Bug {
@@ -52,7 +52,7 @@ const typeDefs = gql`
     linkRepo: String
     product: String
   }
-  
+
   input updateBugInput {
     id: String!
     status: String!

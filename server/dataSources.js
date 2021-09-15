@@ -1,8 +1,7 @@
 const { DataSource } = require('apollo-datasource');
 
 class UserAPI extends DataSource {
-  //store is going to be the sql database
-  // note - should we destructure here?
+  // this.store is our SQL pool
   constructor(store) {
     super();
     this.store = store;
@@ -15,7 +14,6 @@ class UserAPI extends DataSource {
    * here, so we can know about the user making requests
    */
   initialize(config) {
-    // a graph API's context is an object that's shared across every resolver in a GraphQl request
     this.context = config.context;
   }
 
@@ -24,7 +22,6 @@ class UserAPI extends DataSource {
    * have to be. If the user is already on the context, it will use that user
    * instead
    */
-  //    return ALL bugs records from SQL database
   async getAllBugs() {
     try {
       const bugs = await this.store.query(`SELECT * FROM bug`);
@@ -39,16 +36,7 @@ class UserAPI extends DataSource {
     const bug = await this.store.query(`SELECT * FROM bug WHERE id = $1`, [id]);
   }
 
-  // insert a Bug - needs a mutation query
-  async addBug({
-    title,
-    description,
-    userId,
-    priority,
-    status,
-    linkRepo,
-    product,
-  }) {
+  async addBug({ title, description, userId, priority, status, linkRepo, product }) {
     const res = await this.store.query(
       `INSERT INTO
       bug ( title, userID, description, priority, status, linkRepo, product) VALUES
@@ -57,13 +45,13 @@ class UserAPI extends DataSource {
     );
     return res.rows ? res.rows : [];
   }
-  // update bug status - needs a mutation query
-  // UPDATE bug SET status = $1 WHERE id = $2;
-  async updateBug ( { id, status }){
-    const res = await this.store.query(
-      `UPDATE bug SET status = $2 WHERE id = $1 RETURNING *`, [id,status]
-    );
-    return res.rows[0]
+
+  async updateBug({ id, status }) {
+    const res = await this.store.query(`UPDATE bug SET status = $2 WHERE id = $1 RETURNING *`, [
+      id,
+      status,
+    ]);
+    return res.rows[0];
   }
 }
 module.exports = UserAPI;

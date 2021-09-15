@@ -1,36 +1,35 @@
-import React from "react";
-import { useDrag } from "react-dnd";
-import "./Bug.scss";
-import { gql, useMutation } from "@apollo/client";
+import React from 'react';
+import { useDrag } from 'react-dnd';
+import './Bug.scss';
+import { gql, useMutation } from '@apollo/client';
 
 const UPDATE_BUG_STATUS = gql`
-mutation UpdateBug($updateBugStatus: updateBugInput) {
-  updateBug(input: $updateBugStatus) {
-    id
-    status
+  mutation UpdateBug($updateBugStatus: updateBugInput) {
+    updateBug(input: $updateBugStatus) {
+      id
+      status
+    }
   }
-}
-`
+`;
 
 function Bug({ data, refetch }) {
-  const [updateBug, { __, loading, error }] = useMutation(UPDATE_BUG_STATUS);  
+  const [updateBug, { __, loading, error }] = useMutation(UPDATE_BUG_STATUS);
 
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: "CARD",
+    type: 'CARD',
     item: { data },
     end: async (item, monitor) => {
       const dropResult = monitor.getDropResult();
-      try { 
-        console.log(item.data, dropResult.columnName)
-        const result = await updateBug({
+      try {
+        await updateBug({
           variables: {
             updateBugStatus: {
-              id: item.data.id, 
-              status: dropResult.columnName
-            }
-          }
+              id: item.data.id,
+              status: dropResult.columnName,
+            },
+          },
         });
-        refetch()
+        refetch();
       } catch (err) {
         console.error(err);
       }

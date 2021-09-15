@@ -10,6 +10,7 @@ export const GET_ALL_BUGS = gql`
     bugs {
       title
       description
+      status
     }
   }
 `;
@@ -29,7 +30,7 @@ const Board = () => {
         <Column data={data} columnName={"todo"} title={"To Do"} />
       </div>
       <div className='fields'>
-        <Column data={data} columnName={"inprogress"} title={"In-Progress"} />
+        <Column data={data} columnName={"in-progress"} title={"In-Progress"} />
       </div>
       <div className='fields'>
          <Column data={data} columnName={"review"} title={"Review"} />

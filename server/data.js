@@ -19,7 +19,7 @@ const bugs = [
     description: 'git problems',
     organization: 'frontend',
     priority: 'high',
-  },
+  }
 ];
 
 module.exports = bugs;

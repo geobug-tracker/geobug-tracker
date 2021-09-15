@@ -1,4 +1,4 @@
-const { DataSource } = require("apollo-datasource");
+const { DataSource } = require('apollo-datasource');
 
 class UserAPI extends DataSource {
   //store is going to be the sql database
@@ -35,56 +35,6 @@ class UserAPI extends DataSource {
     const { id } = bugId;
     const bug = await this.store.query(`SELECT * FROM bug WHERE id = $1`, [id]);
   }
-
-  // NB - REFERENCE BOILERPLATE - DATASOURCES Example from Apollo
-  //   bookTrips({ launchIds }): Takes an object with an array of launchIds and books them for the logged-in user.
-  //   async bookTrips({ launchIds }) {
-  //     const userId = this.context.user.id;
-  //     if (!userId) return;
-
-  //     let results = [];
-
-  //     // for each launch id, try to book the trip and add it to the results array
-  //     // if successful
-  //     for (const launchId of launchIds) {
-  //       const res = await this.bookTrip({ launchId });
-  //       if (res) results.push(res);
-  //     }
-
-  //     return results;
-  //   }
-
-  //   async bookTrip({ launchId }) {
-  //     const userId = this.context.user.id;
-  //     const res = await this.store.trips.findOrCreate({
-  //       where: { userId, launchId },
-  //     });
-  //     return res && res.length ? res[0].get() : false;
-  //   }
-  // //   cancelTrip({ launchId }): Takes an object with a launchId and cancels that launch for the logged-in user.
-  //   async cancelTrip({ launchId }) {
-  //     const userId = this.context.user.id;
-  //     return !!this.store.trips.destroy({ where: { userId, launchId } });
-  //   }
-  // //   getLaunchIdsByUser(): Returns all booked trips for the logged-in user.
-  //   async getLaunchIdsByUser() {
-  //     const userId = this.context.user.id;
-  //     const found = await this.store.trips.findAll({
-  //       where: { userId },
-  //     });
-  //     return found && found.length
-  //       ? found.map((l) => l.dataValues.launchId).filter((l) => !!l)
-  //       : [];
-  //   }
-  // //   isBookedOnLaunch({ launchId }): Determines whether the logged-in user has booked a trip on a particular launch.
-  //   async isBookedOnLaunch({ launchId }) {
-  //     if (!this.context || !this.context.user) return false;
-  //     const userId = this.context.user.id;
-  //     const found = await this.store.trips.findAll({
-  //       where: { userId, launchId },
-  //     });
-  //     return found && found.length > 0;
-  //   }
 }
 
 module.exports = UserAPI;

@@ -10,9 +10,12 @@ clear out the database and re-setup the tables.
 global.beforeAll(async () => {
   try {
     const pool = await connect(true);
-    const setup = fs.readFileSync(path.resolve(__dirname, 'tests', 'beforeAll.sql'), {
-      encoding: 'utf8',
-    });
+    const setup = fs.readFileSync(
+      path.resolve(__dirname, 'server', '__tests__', 'helpers', 'setup.sql'),
+      {
+        encoding: 'utf8',
+      }
+    );
 
     /* Give access to pool */
     await pool.query(setup);

@@ -2,6 +2,7 @@ const config = {
   verbose: true,
   setupFilesAfterEnv: ['./jest-setup.js'],
   moduleNameMapper: { '\\.(css|scss|sass)$': 'identity-obj-proxy' },
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/server/__tests__/helpers/'],
 };
 
 module.exports = config;

@@ -2,7 +2,7 @@ const { ApolloServer, gql } = require('apollo-server');
 const typeDefs = require('../typeDefs');
 const resolvers = require('../resolvers');
 const BugAPI = require('../dataSources');
-const { GET_BUG_BY_ID, GET_ALL_BUGS } = require('../../tests/queries');
+const { GET_BUG_BY_ID, GET_ALL_BUGS } = require('./helpers/queries');
 
 /* Connect to PG */
 let server;

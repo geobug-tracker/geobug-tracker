@@ -1,4 +1,4 @@
-const { Pool, Client } = require("pg");
+const { Pool, Client } = require('pg');
 // Go look at the postgres docs
 async function connect() {
   const config = {

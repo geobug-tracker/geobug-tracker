@@ -1,0 +1,14 @@
+@import "../../variables";
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: $theme-color-main;
+  padding: 2% 4%;
+
+  .fas {
+    color: white;
+    margin-right: 1rem;
+    font-size: 2rem;
+  }
+}

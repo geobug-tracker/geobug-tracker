@@ -1,16 +1,39 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 import "./Bug.scss";
+import { gql, useMutation } from "@apollo/client";
 
-const Bug = ({ data }) => {
+const UPDATE_BUG_STATUS = gql`
+mutation UpdateBug($updateBugStatus: updateBugInput) {
+  updateBug(input: $updateBugStatus) {
+    id
+    status
+  }
+}
+`
+
+function Bug({ data, refetch }) {
+  const [updateBug, { __, loading, error }] = useMutation(UPDATE_BUG_STATUS);  
+
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "CARD",
     item: { data },
-    end: (item, monitor) => {
+    end: async (item, monitor) => {
       const dropResult = monitor.getDropResult();
-      console.log("ITEM IS", item);
-      console.log("DROP RESULT IS", dropResult.columnName);
-      alert("DRAG AND DROP WORKED.");
+      try { 
+        console.log(item.data, dropResult.columnName)
+        const result = await updateBug({
+          variables: {
+            updateBugStatus: {
+              id: item.data.id, 
+              status: dropResult.columnName
+            }
+          }
+        });
+        refetch()
+      } catch (err) {
+        console.error(err);
+      }
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
@@ -24,6 +47,6 @@ const Bug = ({ data }) => {
       <p>{data.description}</p>
     </div>
   );
-};
+}
 
 export default Bug;

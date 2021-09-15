@@ -8,9 +8,11 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 export const GET_ALL_BUGS = gql`
   query {
     bugs {
+      id
       title
       description
       status
+      priority
     }
   }
 `;
@@ -20,7 +22,7 @@ const Home = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <Header refetch={refetch} />
-      <Board loading={loading} data={data} error={error} />
+      <Board loading={loading} data={data} error={error} refetch={refetch} />
     </DndProvider>
   );
 };

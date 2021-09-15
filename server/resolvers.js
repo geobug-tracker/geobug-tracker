@@ -7,6 +7,11 @@ const resolvers = {
       dataSources.bugAPI.getBug({ bugid: id }),
   },
   Mutation: {
+    updateBug: async (_, { input }, { dataSources }) => {
+      const bug = await dataSources.bugAPI.updateBug(input);
+      console.log(bug)
+      return bug;
+    },
     addBug: async (_, args, { dataSources }) => {
       console.log(args);
       const bugs = await dataSources.bugAPI.addBug(args.input);

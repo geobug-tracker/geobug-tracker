@@ -58,5 +58,12 @@ class UserAPI extends DataSource {
     return res.rows ? res.rows : [];
   }
   // update bug status - needs a mutation query
+  // UPDATE bug SET status = $1 WHERE id = $2;
+  async updateBug ( { id, status }){
+    const res = await this.store.query(
+      `UPDATE bug SET status = $2 WHERE id = $1 RETURNING *`, [id,status]
+    );
+    return res.rows[0]
+  }
 }
 module.exports = UserAPI;

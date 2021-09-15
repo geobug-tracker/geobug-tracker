@@ -37,6 +37,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    updateBug(input: updateBugInput): Bug
     addBug(input: inputBug): [Bug]
     deleteBug(id: ID!): Bug
     login(userName: String, password: String): User
@@ -50,6 +51,11 @@ const typeDefs = gql`
     status: String
     linkRepo: String
     product: String
+  }
+  
+  input updateBugInput {
+    id: String!
+    status: String!
   }
 `;
 

@@ -26,13 +26,14 @@ class UserAPI extends DataSource {
    */
   //    return ALL bugs records from SQL database
   async getAllBugs() {
-    const bugs = await this.store.query(`SELECT * FROM bugs`);
-    return bugs.rows[0] ? bugs.rows[0] : null;
+    const bugs = await this.store.query(`SELECT * FROM bug`);
+    console.log(bugs.rows[0]);
+    return bugs.rows[0] ? [bugs.rows[0]] : null;
   }
 
   async getBug(bugId) {
     const { id } = bugId;
-    const bug = await this.store.query(`SELECT * WHERE id = $1`, [id]);
+    const bug = await this.store.query(`SELECT * FROM bug WHERE id = $1`, [id]);
   }
 
   // NB - REFERENCE BOILERPLATE - DATASOURCES Example from Apollo

@@ -1,22 +1,20 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import Column from './Column';
-import './Board.scss';
-import Bug from "../Bug/Bug"
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import './Board.scss';
 
-const Board = () => {
-
-  const GET_ALL_BUGS = gql`
-    query {
-        bugs {
-            title
-            description
-        }
+export const GET_ALL_BUGS = gql`
+  query {
+    bugs {
+      title
+      description
     }
-`
-  const { loading, error, data } = useQuery(GET_ALL_BUGS);
+  }
+`;
+const Board = () => {
+  const { loading, error, data, refetch } = useQuery(GET_ALL_BUGS);
 
   if(loading) return <p>Loading...</p>
   if(error) return <p>An error occured!</p>

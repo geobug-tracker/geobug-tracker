@@ -7,7 +7,7 @@ const data = require('../data');
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
-describe('Testing bug resolver', () => {
+xdescribe('Testing bug resolver', () => {
   it('Should return bug titles', async () => {
     const result = await server.executeOperation({
       query: GET_ALL_BUGS,

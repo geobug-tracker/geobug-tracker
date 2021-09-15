@@ -38,6 +38,25 @@ class UserAPI extends DataSource {
     const { id } = bugId;
     const bug = await this.store.query(`SELECT * FROM bug WHERE id = $1`, [id]);
   }
-}
 
+  // insert a Bug - needs a mutation query
+  async addBug({
+    title,
+    description,
+    userId,
+    priority,
+    status,
+    linkRepo,
+    product,
+  }) {
+    const res = await this.store.query(
+      `INSERT INTO
+      bug ( title, userID, description, priority, status, linkRepo, product) VALUES
+      ($1, $2, $3, $4, $5, $6, $7)`,
+      [title, userId, description, priority, status, linkRepo, product]
+    );
+    return res.rows ? res.rows : [];
+  }
+  // update bug status - needs a mutation query
+}
 module.exports = UserAPI;

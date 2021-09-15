@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
-import { useQuery, gql, useMutation } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 
 import './CreateBug.scss';
 
 const CREATE_BUG_MUTATION = gql`
-mutation AddBug($addBugInput: inputBug) {
-    addBug(input: $addBugInput) {
-        id
-        description
-    }
-}
-`;
-
-const ADD_TODO = gql`
-  mutation AddTodo($text: String!) {
-    addTodo(text: $text) {
-      id
-      text
-    }
+  mutation AddBug($addBugInput: inputBug) {
+      addBug(input: $addBugInput) {
+          id
+          description
+      }
   }
 `;
+
 const CreateBug = ({ setShowModal }) => {
   const [title, setTitle] = useState('');
   const [product, setProduct] = useState("");
@@ -27,7 +19,7 @@ const CreateBug = ({ setShowModal }) => {
   const [link, setLink] = useState('');
   const [priorityLevel, setPriorityLevel] = useState('P5');
 
-  const [createBug, { data, loading, error }] = useMutation(CREATE_BUG_MUTATION);  
+  // const [createBug, { data, loading, error }] = useMutation(CREATE_BUG_MUTATION);  
 
   const handleChangeTitle = (event) => {
     setTitle(event.target.value);
@@ -59,11 +51,11 @@ const CreateBug = ({ setShowModal }) => {
   return (
     <div className="bug-modal">
       <div className="createBugContent">
-        <div className='createBugHeader'>
+        <div className="createBugHeader">
           <h2>Create a New Bug</h2>
         </div>
-        <form className='createBugForm'> 
-          <div className='input'>
+        <form className="createBugForm">
+          <div className="input">
             <label>Title:</label>
             <input type="text" id="title" name="title" value={title} onChange={handleChangeTitle} />
           </div>
@@ -71,15 +63,15 @@ const CreateBug = ({ setShowModal }) => {
             <label>Description:</label>
             <input type="text" id="description" name="description" value={description} onChange={handleChangeDescription} />
           </div>
-          <div className='input'>
+          <div className="input">
             <label>Product:</label>
             <input type="text" id="product" name="product" value={product} onChange={handleChangeProduct} />
           </div>
-          <div className='input'>
+          <div className="input">
             <label>Link/Repo:</label>
             <input type="text" id="repo" name="repo" value={link} onChange={handleChangeLink}/>
           </div>
-          <div className='input'>
+          <div className="input">
             <label>Priority Level:</label>
             <select id="plevel" name="plevel" value={priorityLevel} onChange={handleSetPriorityLevel}>
               <option value="p0">P0</option>
@@ -94,7 +86,7 @@ const CreateBug = ({ setShowModal }) => {
         <button onClick={handleCreateBug}>Create Bug</button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CreateBug
+export default CreateBug;

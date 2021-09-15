@@ -6,6 +6,7 @@ users (teamid, username, firstname, lastname, password, email) VALUES
 
 INSERT INTO
 bug (title, userID, description, priority, status, linkRepo, product) VALUES
+<<<<<<< HEAD
 ('First Bug', 1, 'I am the first bug', 1, 'new', 'github.com/asdf', 'GeoBug');
 
 -- INSERT INTO
@@ -22,3 +23,6 @@ bug (title, userID, description, priority, status, linkRepo, product) VALUES
 -- INSERT INTO
 -- bug (id, title, userID, description, priority, status, linkRepo, product) VALUES
 -- (5, 'Fifth Bug', 1, 'l;kajsdf9asdf', 1, 'done', 'github.com/asdf', 'GeoBug');
+=======
+('First Bug', 1, 'I am the first bug', 1, 'new', 'github.com/asdf', 'GeoBug');
+>>>>>>> dev

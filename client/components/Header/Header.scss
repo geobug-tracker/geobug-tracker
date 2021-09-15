@@ -4,6 +4,11 @@
   display: flex;
   justify-content: space-between;
   background-color: $theme-color-main;
-  padding-left: 4%;
-  padding-right: 4%;
+  padding: 2% 4%;
+
+  .fas {
+    color: white;
+    margin-right: 1rem;
+    font-size: 2rem;
+  }
 }

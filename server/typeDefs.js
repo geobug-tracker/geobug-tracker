@@ -1,4 +1,4 @@
-const { ApolloServer, gql } = require('apollo-server');
+const { ApolloServer, gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Bug {
@@ -37,24 +37,19 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addBug(
-      id: ID!
-      title: String!
-      description: String
-      userId: String
-      priority: String
-      status: String
-      linkRepo: String
-      product: String
-    ): BugUpdateResponse!
-    deleteBug(id: ID!): BugUpdateResponse!
+    addBug(input: inputBug): [Bug]
+    deleteBug(id: ID!): Bug
     login(userName: String, password: String): User
   }
 
-  type BugUpdateResponse {
-    success: Boolean!
-    message: String
-    bugs: [Bug]
+  input inputBug {
+    title: String!
+    description: String
+    userId: Int
+    priority: String
+    status: String
+    linkRepo: String
+    product: String
   }
 `;
 

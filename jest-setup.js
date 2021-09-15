@@ -22,3 +22,7 @@ global.beforeAll(async () => {
     console.error(err);
   }
 });
+
+global.afterAll(async () => {
+  await global.pool.end();
+});

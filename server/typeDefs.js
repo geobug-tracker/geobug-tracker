@@ -31,7 +31,7 @@ const typeDefs = gql`
 
   type Query {
     bugs: [Bug]
-    bug: Bug!
+    bug(id: Int): Bug
     users: [User]!
     user(userName: String!): User
   }

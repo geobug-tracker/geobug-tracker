@@ -31,9 +31,9 @@ class UserAPI extends DataSource {
     }
   }
 
-  async getBug(bugId) {
-    const { id } = bugId;
-    const bug = await this.store.query(`SELECT * FROM bug WHERE id = $1`, [id]);
+  async getBug({ id }) {
+    const results = await this.store.query(`SELECT * FROM bug WHERE id = $1`, [id]);
+    return results.rows[0];
   }
 
   async addBug({ title, description, userId, priority, status, linkRepo, product }) {

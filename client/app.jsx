@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Loader from './components/Loader/Loader';
 
@@ -18,7 +17,6 @@ const App = () => {
             <Signup />
           </Route>
           <Route path="/">
-            <Header />
             <Home />
             <Footer className="footer" />
           </Route>

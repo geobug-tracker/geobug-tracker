@@ -12,7 +12,7 @@ dotenv.config({
 });
 
 async function startupBackend() {
-  const pool = await createPool(); // returns pool object that has connected to the post gres DB
+  const pool = await createPool();
   const server = new ApolloServer({
     typeDefs,
     resolvers,

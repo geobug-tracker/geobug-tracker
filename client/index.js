@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client
 
 const client = new ApolloClient({
   uri: 'http://localhost:3000',
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
 render(
@@ -19,17 +19,3 @@ render(
   document.getElementById('root')
 );
 
-
-
-// client
-//   .query({
-//     query: gql`
-//       query {
-//         bugs {
-//           title
-//           description
-//         }
-//       }
-//     `
-//   })
-//   .then(result => console.log(result));

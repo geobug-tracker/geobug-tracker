@@ -8,10 +8,11 @@ const config = {
 module.exports = config;
 
 /* If in test mode, load up test environment */
-process.env = Object.assign(process.env, {
+process.env = {
+  ...process.env,
   PGHOST: '127.0.0.1',
   PGPORT: '5432',
   PGDATABASE: 'geobug_test',
   PGUSER: 'harrisoncramer',
   PGPASSWORD: 'postgres',
-});
+};
